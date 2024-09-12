@@ -9,6 +9,8 @@
 </head>
 <body>
 
+
+
     <aside class="aside">
         <div class="container">
             <div class="header_aside">
@@ -29,11 +31,13 @@
 
     <main class="main">
         <div class="container">
-            <form class="main_form" method="get">
-                <output name="x" for="text"></output>
-                <input type="text" placeholder="Введите текст" class="text_base" id="text" value="">
-            </form>
+            <input id="post-text" class="form-control" rows="3" placeholder="What's up?" required>
+                <br><br>
+                <button id="button">Copy!!</button>
+                <div class="out"></div>
         </div>
     </main>
+
+    <script src="/js/my.js"></script>
 </body>
 </html>
