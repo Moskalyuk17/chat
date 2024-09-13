@@ -42,6 +42,13 @@ body {
     width: 50%;
 }
 
+.win {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #4067C9;
+    padding-left: 10px;
+    z-index: 999;
+}
 
 .account {
     float: right;

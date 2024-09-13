@@ -19,6 +19,7 @@ document.querySelector("#button").onclick = function gt(){
 document.querySelector(".new_chat").onclick = function gt(){
     var card = document.querySelector('.list_chat');
     var post = document.createElement('button');
+    post.setAttribute('id', 'idName');
     post.style.border = '1px solid';
     post.style.borderRadius = '4px';
     post.style.background = '#696969';
@@ -26,11 +27,30 @@ document.querySelector(".new_chat").onclick = function gt(){
     post.style.margin = '4px';
     post.style.color = '#fff';
     post.style.wordBreak = 'break-all';
-    post.innerHTML = '<h3>Новый чат</h3>';
+    post.innerHTML = '<h3>Новый чат</h3>' + '<button id"button" onclick="openProfileInfo()">меню</button>';
+
+
+    post.style.display = 'flex';
+    post.style.justifyContent = 'space-between';
     post.style.whiteSpace = "pre-wrap";
     post.style.width = '100%'
-
+    post.style.cursor = 'pointer'; 
 
     card.append(post);
     post.append(postText);
+}
+
+let win = document.querySelector('.win');
+win.style.display = 'none';
+
+function openProfileInfo(el) {
+    if(win.style.display == 'none') {
+        win.style.display = 'flex';
+    } else if(win.style.display == 'flex') {
+        win.style.display = 'none';
+    }
+}
+
+function deleteIN(el) {
+    document.querySelector('#idName').remove();
 }
