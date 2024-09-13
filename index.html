@@ -9,14 +9,13 @@
 </head>
 <body>
 
-
-
     <aside class="aside">
         <div class="container">
             <div class="header_aside">
                 <button class="new_chat"><img src="/img/library_add_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt=""></button>
                 <button class="close_sidebar"><img src="/img/left_panel_close_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt=""></button>
             </div>
+            <ul class="list_chat"></ul>
             <div class="assistants">
 
             </div>
@@ -30,11 +29,14 @@
     </header>
 
     <main class="main">
-        <div class="container">
-            <input id="post-text" class="form-control" rows="3" placeholder="What's up?" required>
-                <br><br>
-                <button id="button">Copy!!</button>
+        <div class="container ">
+            <div class="out_sms scrollable">
                 <div class="out"></div>
+            </div>
+            <div class="form_text">
+                <input id="post-text" class="form-control" rows="3" placeholder="What's up?" type="search">
+                <button id="button" type="submit">Copy!!</button>
+            </div>
         </div>
     </main>
 
