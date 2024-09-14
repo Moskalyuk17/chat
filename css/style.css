@@ -33,6 +33,11 @@ body {
     width: 25%;
     cursor: pointer;
 }
+.open_sidebar {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
 
 .new_chat img {
     width: 50%;
@@ -41,6 +46,11 @@ body {
 .close_sidebar img {
     width: 50%;
 }
+
+.open_sidebar img {
+    width: 30%;
+}
+
 
 .win {
     position: absolute;
@@ -72,11 +82,12 @@ body {
     height: 80vh;
     border: 1px solid #fff;
     overflow-y: scroll;
+    width: 100%;
 }
 
 .out {
     position: relative;
-    max-width: 50%;
+    width: 50%;
 }
 
 .form_text {
