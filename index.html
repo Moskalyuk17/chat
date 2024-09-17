@@ -19,6 +19,26 @@
         </div>
     </aside>
 
+    <div class="modalBackground">
+        <div class="modalActive">
+            <div class="modalClose">
+                <img src="modalCross.svg" />
+            </div>
+            <form class="modalWindow">
+                <label for="name_assistant">Название</label>
+                <input type="text" id="name_assistant">
+                <label for="Link">ССылка</label>
+                <input type="text" id="Link">
+                <label for="version">Версия</label>
+                <select id="version">
+                    <option>4o</option>
+                    <option>4o-mini</option>
+                </select>
+                <button class="create" onclick="getID()">Создать</button>
+            </form>
+        </div>
+    </div>
+
     <header class="header">
         <div class="container">
             <div class="account"></div>

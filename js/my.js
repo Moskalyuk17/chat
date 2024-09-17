@@ -16,29 +16,46 @@ document.querySelector(".button").onclick = function gt(){
     document.getElementById("post-text").value = "";
 }
 
-document.querySelector(".new_chat").onclick = function gt(){
-    var card = document.querySelector('.list_chat');
-    var post = document.createElement('button');
-    post.setAttribute('id', 'idName');
-    post.style.border = '1px solid';
-    post.style.borderRadius = '4px';
-    post.style.background = '#696969';
-    post.style.padding = '4px';
-    post.style.margin = '4px';
-    post.style.color = '#fff';
-    post.style.wordBreak = 'break-all';
-    post.innerHTML = '<h3>Новый чат</h3>' + '<button id="button">меню</button>';
-    post.style.display = 'flex';
-    post.style.justifyContent = 'space-between';
-    post.style.whiteSpace = "pre-wrap";
-    post.style.width = '100%'
-    post.style.cursor = 'pointer'; 
+//Создание модального окна
+const modalTrigger = document.getElementsByClassName("new_chat")[0];
 
-    card.append(post);
-    post.append(postText);
+const windowInnerWidth = document.documentElement.clientWidth;
+const scrollbarWidth = parseInt(window.innerWidth) - parseInt(document.documentElement.clientWidth);
+
+const bodyElementHTML = document.getElementsByTagName("body")[0];
+const modalBackground = document.getElementsByClassName("modalBackground")[0];
+const modalClose = document.getElementsByClassName("modalClose")[0];
+const modalActive = document.getElementsByClassName("modalActive")[0];
+
+modalTrigger.addEventListener("click", function () {
+    modalBackground.style.display = "block";
+    modalActive.style.left = "calc(50% - " + (175 - scrollbarWidth / 2) + "px)";
+
+});
+
+modalClose.addEventListener("click", function () {
+    modalBackground.style.display = "none";
+});
+
+modalBackground.addEventListener("click", function (event) {
+    if (event.target === modalBackground) {
+        modalBackground.style.display = "none";
+        if (windowInnerWidth >= 1366) {
+            bodyMargin();
+        }
+    }
+});
+
+function getID() {
+    var inputs = document.querySelectorAll(".modalWindow input[type='text']");
+    var array = Array.from(inputs)
+      .map(item => ({ name: item.name,  version: item.version,  link: item.link}));
+    console.log(array);
 }
 
-
+document.querySelector('.modalWindow').addEventListener('submit', function(e) {
+    e.preventDefault();
+  });
 
 
 let sidebar = document.querySelector('.aside');
