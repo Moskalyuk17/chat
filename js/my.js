@@ -26,36 +26,51 @@ const bodyElementHTML = document.getElementsByTagName("body")[0];
 const modalBackground = document.getElementsByClassName("modalBackground")[0];
 const modalClose = document.getElementsByClassName("modalClose")[0];
 const modalActive = document.getElementsByClassName("modalActive")[0];
+const button1 = document.querySelector(".create");
+const modal = document.querySelector(".modalAccomplished");
+
 
 modalTrigger.addEventListener("click", function () {
     modalBackground.style.display = "block";
+    modal.style.display = "none";
     modalActive.style.left = "calc(50% - " + (175 - scrollbarWidth / 2) + "px)";
-
 });
 
 modalClose.addEventListener("click", function () {
     modalBackground.style.display = "none";
+    modal.style.display = "none";
 });
 
 modalBackground.addEventListener("click", function (event) {
     if (event.target === modalBackground) {
         modalBackground.style.display = "none";
-        if (windowInnerWidth >= 1366) {
-            bodyMargin();
-        }
+        modal.style.display = "none";
     }
 });
 
-function getID() {
-    var inputs = document.querySelectorAll(".modalWindow input[type='text']");
-    var array = Array.from(inputs)
-      .map(item => ({ name: item.name,  version: item.version,  link: item.link}));
-    console.log(array);
+function storeInput() {
+    const inputArray = [];
+    
+    const input1 = document.querySelector("#name_assistant");
+    const input2 = document.querySelector("#Link");
+    const input3 = document.querySelector("#version");
+  
+    const value1 = input1.value;
+    const value2 = input2.value;
+    const value3 = input3.value;
+    
+    inputArray.push(value1, value2, value3);
+    
+    console.log(inputArray);
 }
+
+button1.addEventListener("click", function () {
+    modal.style.display = "block";
+});
 
 document.querySelector('.modalWindow').addEventListener('submit', function(e) {
     e.preventDefault();
-  });
+});
 
 
 let sidebar = document.querySelector('.aside');
