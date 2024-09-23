@@ -27,68 +27,62 @@ const modalBackground = document.getElementsByClassName("modalBackground")[0];
 const modalClose = document.getElementsByClassName("modalClose")[0];
 const modalActive = document.getElementsByClassName("modalActive")[0];
 const buttonCreateEl = document.querySelector(".create");
-const modal = document.querySelector(".modalAccomplished");
 
 
 
 modalTrigger.addEventListener("click", function () {
     modalBackground.style.display = "block";
-    modal.style.display = "none";
     modalActive.style.left = "calc(50% - " + (175 - scrollbarWidth / 2) + "px)";
 });
 
 modalClose.addEventListener("click", function () {
     modalBackground.style.display = "none";
-    modal.style.display = "none";
 });
 
 modalBackground.addEventListener("click", function (event) {
     if (event.target === modalBackground) {
         modalBackground.style.display = "none";
-        modal.style.display = "none";
     }
 });
 
-const inputArray = [];
+
+//Добавление ассистентов в боковую панель
+let inputArray = [];
 
 function storeInput() {
-
     const nameAssistante = document.querySelector("#name_assistant");
     const linkAssistante = document.querySelector("#Link");
     const versionAssistante = document.querySelector("#version");
   
-    const value1 = nameAssistante.value;
-    const value2 = linkAssistante.value;
-    const value3 = versionAssistante.value;
+    const assistant = {
+        name: nameAssistante.value,
+        link: linkAssistante.value,
+        version: versionAssistante.value
+    };
     
-    inputArray.push(value1, value2, value3);
-    
-
-    var usernameDisplay = document.createElement("div");
-    usernameDisplay.innerHTML = value1;
-    usernameDisplay.classList.add("username");
-    document.querySelector(".list_chat").appendChild(usernameDisplay);
+    inputArray.push(assistant);
+    console.log(inputArray);
 }
 
-buttonCreateEl.addEventListener("click", function () {
-    modal.style.display = "block";
+buttonCreateEl.addEventListener("click", function() {
+    modalBackground.style.display = "none";
+    const lastAssistant = inputArray[inputArray.length - 1];
+    
+    const listChat = document.querySelector('.list_chat');
+    const assistantElement = document.createElement('li');
+    assistantElement.classList.add('col-sm');
+    
+    assistantElement.innerHTML = `
+        <p>Название: ${lastAssistant.name}</p>
+        <p>Версия: ${lastAssistant.version}</p>
+    `;
+    
+    listChat.appendChild(assistantElement);
 });
 
 document.querySelector('.modalWindow').addEventListener('submit', function(e) {
     e.preventDefault();
 });
-
-
-//Добавление ассистена в боковую панель
-buttonCreateEl.addEventListener("click", function() { 
-    document.querySelector('.list_chat').innerHTML =   
-
-    '<div class="col-sm">'+
-        `<p>${inputArray.value1}</p>`
-    '</div>'; 
-});
-
-
 
 let sidebar = document.querySelector('.aside');
 let openAside = document.querySelector('.open_sidebar');
@@ -96,11 +90,11 @@ sidebar.style.display = 'block';
 openAside.style.display = 'none';
 
 function closeAside(el) {
-    if(sidebar.style.display == 'none') {
+    if (sidebar.style.display === 'none') {
         sidebar.style.display = 'block';
-        openAside.style.display = 'none'
-    } else if(sidebar.style.display == 'block') {
+        openAside.style.display = 'none';
+    } else if (sidebar.style.display === 'block') {
         sidebar.style.display = 'none';
-        openAside.style.display = 'block'
+        openAside.style.display = 'block';
     }
 }
