@@ -26,8 +26,9 @@ const bodyElementHTML = document.getElementsByTagName("body")[0];
 const modalBackground = document.getElementsByClassName("modalBackground")[0];
 const modalClose = document.getElementsByClassName("modalClose")[0];
 const modalActive = document.getElementsByClassName("modalActive")[0];
-const button1 = document.querySelector(".create");
+const buttonCreateEl = document.querySelector(".create");
 const modal = document.querySelector(".modalAccomplished");
+
 
 
 modalTrigger.addEventListener("click", function () {
@@ -48,29 +49,45 @@ modalBackground.addEventListener("click", function (event) {
     }
 });
 
+const inputArray = [];
+
 function storeInput() {
-    const inputArray = [];
-    
-    const input1 = document.querySelector("#name_assistant");
-    const input2 = document.querySelector("#Link");
-    const input3 = document.querySelector("#version");
+
+    const nameAssistante = document.querySelector("#name_assistant");
+    const linkAssistante = document.querySelector("#Link");
+    const versionAssistante = document.querySelector("#version");
   
-    const value1 = input1.value;
-    const value2 = input2.value;
-    const value3 = input3.value;
+    const value1 = nameAssistante.value;
+    const value2 = linkAssistante.value;
+    const value3 = versionAssistante.value;
     
     inputArray.push(value1, value2, value3);
     
-    console.log(inputArray);
+
+    var usernameDisplay = document.createElement("div");
+    usernameDisplay.innerHTML = value1;
+    usernameDisplay.classList.add("username");
+    document.querySelector(".list_chat").appendChild(usernameDisplay);
 }
 
-button1.addEventListener("click", function () {
+buttonCreateEl.addEventListener("click", function () {
     modal.style.display = "block";
 });
 
 document.querySelector('.modalWindow').addEventListener('submit', function(e) {
     e.preventDefault();
 });
+
+
+//Добавление ассистена в боковую панель
+buttonCreateEl.addEventListener("click", function() { 
+    document.querySelector('.list_chat').innerHTML =   
+
+    '<div class="col-sm">'+
+        `<p>${inputArray.value1}</p>`
+    '</div>'; 
+});
+
 
 
 let sidebar = document.querySelector('.aside');
