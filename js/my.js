@@ -113,16 +113,16 @@ function openEditModal(assistantId, buttonElement) {
 
     modalEdit.querySelector('.deleteAssistant').addEventListener('click', function() {
         deleteAssistant(assistantId);
-        document.body.removeChild(modalEdit); // Закрыть модальное окно после удаления
+        document.body.removeChild(modalEdit); 
     });
 
     modalEdit.querySelector('.editAssistant').addEventListener('click', function() {
         editAssistant(assistantId);
-        document.body.removeChild(modalEdit); // Закрыть модальное окно после изменения
+        document.body.removeChild(modalEdit);
     });
 
     modalEdit.querySelector('.closeModal').addEventListener('click', function() {
-        document.body.removeChild(modalEdit); // Закрыть модальное окно
+        document.body.removeChild(modalEdit);
     });
 }
 
