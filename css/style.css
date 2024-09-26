@@ -18,7 +18,8 @@ body {
     float: left;
     width: 20%;
     height: 100vh;
-    overflow-y: scroll;
+    overflow-y: auto;
+    transition: 0.5s;
 }
 
 .header_aside {
@@ -33,11 +34,13 @@ body {
     width: 25%;
     cursor: pointer;
 }
+
 .open_sidebar {
     background: none;
     border: none;
     cursor: pointer;
 }
+
 
 .new_chat img {
     width: 50%;
@@ -48,9 +51,8 @@ body {
 }
 
 .open_sidebar img {
-    width: 30%;
+    width: 120%;
 }
-
 
 .win {
     position: absolute;
@@ -163,6 +165,75 @@ body {
 
 .modalWindow {
     position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.modalWindow label {
+    margin: 10px 0;
+}
+
+.modalWindow input {
+    background: #EBEBEB;
+    border: none;
+    padding: 6px;
+}
+
+.selected {
+    padding: 10px;
+    background: #EBEBEB;
+    cursor: pointer;
+    border: none;
+}
+
+#Link {
+    color: #808080	;
+}
+
+#version  {
+    display: none;
+    width: 100%;
+    z-index: 10;
+    margin-top: 10px;
+}
+
+#version li {
+    padding: 10px;
+    cursor: pointer;
+    list-style-type: none;
+}
+
+.m-show {
+    background-color: #EBEBEB;
+    display: block;
+    animation: showBlock .8s linear forwards;
+}
+
+@keyframes showBlock {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+.menuLinks {
+}
+
+
+.create {
+    border-radius: 6px;
+    margin-top: 20px;
+    padding: 6px;
+    background: #E0E0E0;
+    border: none;
+    cursor: pointer;
+}
+
+.create:hover {
+    transition: .6s;
+    transform: scale(1.06);
 }
 
 .modalAccomplished {
@@ -170,8 +241,63 @@ body {
 }
 
 .col-sm{
-    background-color: red;
     float: left;
     width: 100%;
     margin: 5px;
+    color: #fff;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background: #141414;
+    border-radius: 8px;
+    align-items: center;
+    padding: 10px;
+}
+
+.text_item {
+    overflow: hidden;
+	width: 88%;
+    position: relative;
+
+}
+
+.text_item:after {
+	content: "";
+	text-align: right;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 70%;
+	height: 1.2em;
+	background: linear-gradient(to right, rgba(255, 255, 255, 0), #141414 100%);
+	pointer-events: none;
+}
+
+.openEditAssistante {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.modalContent {
+    background: #080808;
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.modalContent button {
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    background: #141414;
+    padding: 6px;
+    cursor: pointer;
+}
+
+.editAssistant {
+    margin: 10px 0;
 }

@@ -13,7 +13,7 @@
         <div class="container">
             <div class="header_aside">
                 <button class="new_chat"><img src="/img/library_add_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt=""></button>
-                <button class="close_sidebar" onclick="closeAside()"><img src="/img/left_panel_close_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt=""></button>
+                <button class="close_sidebar" onclick="closeAside()"><img src="/img/left_panel_close_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg" alt=""></button>
             </div>
             <ul class="list_chat"></ul>
         </div>
@@ -22,22 +22,24 @@
     <div class="modalBackground">
         <div class="modalActive">
             <div class="modalClose">
-                <img src="modalCross.svg" />
+                <img src="/img/close_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg" />
             </div>
             <form class="modalWindow">
                 <label for="name_assistant">Название</label>
-                <input type="text" id="name_assistant">
-                <label for="Link">ССылка</label>
-                <input type="text" id="Link" readonly>
+                <input type="text" id="name_assistant" required>
+                <label for="Link">Сcылка</label>
+                <input type="text" id="Link" readonly value="Ссылка создается автоматически">
                 <label for="version">Версия</label>
-                <select id="version">
-                    <option>4o</option>
-                    <option>4o-mini</option>
-                </select>
+                <div class="selected">4o</div>
+                <ul id="version">
+                    <li data-value="1">4o-mini</li>
+                    <li data-value="2">4o</li>
+                </ul>
                 <button class="create" onclick="storeInput()">Создать</button>
             </form>
         </div>
     </div>
+    
 
     <div class="modalBackground">
         <div class="modalActive">
@@ -51,7 +53,7 @@
     <header class="header">
         <div class="container">
             <div class="account"></div>
-            <button class="open_sidebar" onclick="closeAside()"><img src="/img/right_panel_close_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24 (1).png" alt=""></button>
+            <button class="open_sidebar" onclick="closeAside()"><img src="/img/right_panel_close_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg" alt=""></button>
         </div>
     </header>
 

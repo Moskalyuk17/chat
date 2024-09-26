@@ -75,9 +75,8 @@ buttonCreateEl.addEventListener("click", function() {
     assistantElement.setAttribute('id', `assistant-${lastAssistant.id}`);
     
     assistantElement.innerHTML = `
-        <p>Название: ${lastAssistant.name}</p>
-        <p>Версия: ${lastAssistant.version}</p>
-        <button class="openEditAssistante">Кнопка</button>
+        <div class="text_item">${lastAssistant.name}</div>
+        <button class="openEditAssistante"><img src="/img/more_horiz_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg" alt=""></button>
     `;
     
     listChat.appendChild(assistantElement);
@@ -96,7 +95,6 @@ function openEditModal(assistantId, buttonElement) {
     modalEdit.classList.add('modalEdit');
     modalEdit.innerHTML = `
         <div class="modalContent">
-            <h2>Редактировать ассистента</h2>
             <button class="deleteAssistant">Удалить</button>
             <button class="editAssistant">Изменить</button>
             <button class="closeModal">Закрыть</button>
@@ -106,8 +104,8 @@ function openEditModal(assistantId, buttonElement) {
     const buttonRect = buttonElement.getBoundingClientRect();
     
     modalEdit.style.position = 'absolute';
-    modalEdit.style.left = `${buttonRect.right + 10}px`; // 10px отступ вправо от кнопки
-    modalEdit.style.top = `${buttonRect.top}px`; // По вертикали на уровне кнопки
+    modalEdit.style.left = `${buttonRect.right + 16}px`;
+    modalEdit.style.top = `${buttonRect.top}px`;
 
     document.body.appendChild(modalEdit);
 
@@ -142,7 +140,7 @@ function editAssistant(assistantId) {
         const newName = prompt("Введите новое название ассистента:", assistant.name);
         if (newName) {
             assistant.name = newName;
-            document.querySelector(`#assistant-${assistantId} p`).textContent = `Название: ${newName}`;
+            document.querySelector(`#assistant-${assistantId} div`).textContent = `${newName}`;
         }
     }
 }
@@ -164,3 +162,35 @@ function closeAside(el) {
         openAside.style.display = 'block';
     }
 }
+
+
+const selected = document.querySelector('.selected');
+const versionList = document.querySelector('#version');
+const versionOptions = versionList.querySelectorAll('li');
+
+// Открытие/закрытие списка при клике на "selected"
+selected.addEventListener('click', function () {
+    if (versionList.style.display === 'block') {
+        versionList.style.display = 'none';
+    } else {
+        versionList.style.display = 'block';
+    }
+});
+
+versionOptions.forEach(function(option) {
+    option.addEventListener('click', function () {
+        const selectedValue = option.textContent;
+        selected.textContent = selectedValue;
+        versionList.style.display = 'none';
+    });
+});
+
+
+var btn = document.querySelector('.selected');
+var blockHidden = document.querySelector('#version');
+
+function showBlock() {
+  blockHidden.classList.add('m-show');
+}
+btn.addEventListener('click', showBlock);
+
