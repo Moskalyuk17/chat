@@ -12,8 +12,8 @@
     <aside class="aside">
         <div class="container">
             <div class="header_aside">
-                <button class="new_chat"><img src="/img/library_add_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt=""></button>
-                <button class="close_sidebar" onclick="closeAside()"><img src="/img/left_panel_close_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg" alt=""></button>
+                <button class="new_chat" data="Добавить нового ассистента"><img src="/img/addNewAssistante.svg" alt="добавление ассистента" ></button>
+                <button class="close_sidebar" data="Закрыть боковую панель"><img src="/img/close_sidebar.svg" alt="закрытия боковой панели"></button>
             </div>
             <ul class="list_chat"></ul>
         </div>
@@ -21,9 +21,9 @@
 
     <div class="modalBackground">
         <div class="modalActive">
-            <div class="modalClose">
-                <img src="/img/close_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg" />
-            </div>
+            <button class="modalClose" data="Закрытия модального окна">
+                <img src="/img/close_modal_window.svg" alt="закрытие модального окна" />
+            </button>
             <form class="modalWindow">
                 <label for="name_assistant">Название</label>
                 <input type="text" id="name_assistant" required>
@@ -35,25 +35,16 @@
                     <li data-value="1">4o-mini</li>
                     <li data-value="2">4o</li>
                 </ul>
-                <button class="create" onclick="storeInput()">Создать</button>
+                <button class="create">Создать</button>
             </form>
         </div>
     </div>
     
 
-    <div class="modalBackground">
-        <div class="modalActive">
-            <div class="modalClose">
-                <img src="modalCross.svg" />
-            </div>
-            <div class="modalAccomplished">Успешно выполнено</div>
-        </div>
-    </div>
-
     <header class="header">
         <div class="container">
             <div class="account"></div>
-            <button class="open_sidebar" onclick="closeAside()"><img src="/img/right_panel_close_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg" alt=""></button>
+            <button class="open_sidebar" data="Открытие боковой панели"><img src="/img/open_sidebar.svg" alt="открытие боковой панели" ></button>
         </div>
     </header>
 
@@ -64,11 +55,11 @@
             </div>
             <div class="form_text">
                 <input id="post-text" class="form-control" rows="3" placeholder="What's up?" type="search">
-                <button class="button" type="submit">Copy!!</button>
+                <button class="message_input" type="submit">Copy!!</button>
             </div>
         </div>
     </main>
 
-    <script src="/js/my.js"></script>
+    <script async src="/js/my.js"></script>
 </body>
 </html>

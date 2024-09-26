@@ -6,7 +6,21 @@
 }
 
 body {
-    background-color: #333333;
+    background-color: #212121;
+}
+
+
+button[data]:hover:after {
+    content: attr(data);
+    color: #fff;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    white-space: nowrap;
+    z-index: 100;
+    border-radius: 5px ;
+    background: #000;
+    padding: 10px;
 }
 
 .container {
@@ -14,12 +28,11 @@ body {
 }
 
 .aside {
-    background-color: #000;
+    background-color: #171717;
     float: left;
     width: 20%;
     height: 100vh;
     overflow-y: auto;
-    transition: 0.5s;
 }
 
 .header_aside {
@@ -41,7 +54,6 @@ body {
     cursor: pointer;
 }
 
-
 .new_chat img {
     width: 50%;
 }
@@ -54,12 +66,10 @@ body {
     width: 120%;
 }
 
-.win {
-    position: absolute;
-    background-color: #fff;
-    border: 1px solid #4067C9;
-    padding-left: 10px;
-    z-index: 999;
+.new_chat:hover,
+.close_sidebar:hover,
+.open_sidebar:hover {
+    transform: scale(1.1);
 }
 
 .account {
@@ -76,7 +86,6 @@ body {
     padding-top: 20px;
 }
 
-
 .out_sms {
     display: flex;
     justify-content: end;
@@ -89,7 +98,14 @@ body {
 
 .out {
     position: relative;
-    width: 50%;
+    max-width: 50%;
+    border: none;
+    background:#2F2F2F;
+    border-radius: 16px;
+    padding:16px;
+    margin: 4px;
+    color: #fff;
+    word-break: break-all;
 }
 
 .form_text {
@@ -148,6 +164,8 @@ body {
 }
 
 .modalClose {
+    background: none;
+    border: none;
     font-family: var(--font-regular);
     position: absolute;
     right: 5px;
@@ -203,7 +221,7 @@ body {
     list-style-type: none;
 }
 
-.m-show {
+.select-show {
     background-color: #EBEBEB;
     display: block;
     animation: showBlock .8s linear forwards;
@@ -216,11 +234,7 @@ body {
     100% {
       opacity: 1;
     }
-  }
-
-.menuLinks {
 }
-
 
 .create {
     border-radius: 6px;
@@ -240,7 +254,7 @@ body {
     position: relative;
 }
 
-.col-sm{
+.info_assistante{
     float: left;
     width: 100%;
     margin: 5px;
@@ -249,17 +263,19 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background: #141414;
     border-radius: 8px;
     align-items: center;
     padding: 10px;
+}
+
+.info_assistante:hover {
+    background-color: #202020;
 }
 
 .text_item {
     overflow: hidden;
 	width: 88%;
     position: relative;
-
 }
 
 .text_item:after {
@@ -268,9 +284,9 @@ body {
 	position: absolute;
 	bottom: 0;
 	right: 0;
-	width: 70%;
+	width: 6%;
 	height: 1.2em;
-	background: linear-gradient(to right, rgba(255, 255, 255, 0), #141414 100%);
+	background: linear-gradient(to right, rgba(255, 255, 255, 0), #171717 100%);
 	pointer-events: none;
 }
 

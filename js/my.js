@@ -1,18 +1,12 @@
 //Вывод сообщений в окне
-document.querySelector(".button").onclick = function gt(){
-    var card = document.querySelector('.out');
-    var post = document.createElement('p');
-    post.style.border = '1px solid black';
-    post.style.borderRadius = '4px';
-    post.style.padding = '4px';
-    post.style.margin = '4px';
-    post.style.color = '#fff';
-    post.style.wordBreak = 'break-all';
+document.querySelector(".message_input").onclick = function inputMessage(){
+    const card = document.querySelector('.out');
+    const text_block = document.createElement('p');
 
-    var postText = document.getElementById('post-text').value;
-    post.style.whiteSpace = "pre-wrap";
-    card.append(post);
-    post.append(postText);
+    const tbText = document.getElementById('post-text').value;
+    text_block.style.whiteSpace = "pre-wrap";
+    card.append(text_block);
+    text_block.append(tbText);
     document.getElementById("post-text").value = "";
 }
 
@@ -48,7 +42,7 @@ modalBackground.addEventListener("click", function (event) {
 let inputArray = [];
 let assistantId = 1;
 
-function storeInput() {
+document.querySelector('.create').onclick = function storeInput() {
     const nameAssistante = document.querySelector("#name_assistant");
     const linkAssistante = document.querySelector("#Link");
     const versionAssistante = document.querySelector("#version");
@@ -64,19 +58,20 @@ function storeInput() {
     console.log(inputArray);
 }
 
+
 buttonCreateEl.addEventListener("click", function() {
     modalBackground.style.display = "none";
     const lastAssistant = inputArray[inputArray.length - 1];
     
     const listChat = document.querySelector('.list_chat');
     const assistantElement = document.createElement('li');
-    assistantElement.classList.add('col-sm');
+    assistantElement.classList.add('info_assistante');
     
     assistantElement.setAttribute('id', `assistant-${lastAssistant.id}`);
     
     assistantElement.innerHTML = `
         <div class="text_item">${lastAssistant.name}</div>
-        <button class="openEditAssistante"><img src="/img/more_horiz_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg" alt=""></button>
+        <button class="openEditAssistante"><img src="/img/more_infoForAssistante.svg" alt="Опции"></button>
     `;
     
     listChat.appendChild(assistantElement);
@@ -148,19 +143,23 @@ function editAssistant(assistantId) {
 
 
 //открытие боковой панели
-let sidebar = document.querySelector('.aside');
-let openAside = document.querySelector('.open_sidebar');
+const sidebar = document.querySelector('.aside');
+const openAside = document.querySelector('.open_sidebar');
 sidebar.style.display = 'block';
 openAside.style.display = 'none';
 
-function closeAside(el) {
-    if (sidebar.style.display === 'none') {
-        sidebar.style.display = 'block';
-        openAside.style.display = 'none';
-    } else if (sidebar.style.display === 'block') {
+document.querySelector(".close_sidebar").onclick = function mode(){
+    if (sidebar.style.display === 'block') {
         sidebar.style.display = 'none';
         openAside.style.display = 'block';
     }
+}
+
+document.querySelector(".open_sidebar").onclick = function mode(){
+ if (sidebar.style.display === 'none'){
+       sidebar.style.display = 'block';
+       openAside.style.display = 'none';
+   }
 }
 
 
@@ -186,11 +185,10 @@ versionOptions.forEach(function(option) {
 });
 
 
-var btn = document.querySelector('.selected');
-var blockHidden = document.querySelector('#version');
+const btn = document.querySelector('.selected');
+const blockHidden = document.querySelector('#version');
 
 function showBlock() {
-  blockHidden.classList.add('m-show');
+  blockHidden.classList.add('select-show');
 }
 btn.addEventListener('click', showBlock);
-
