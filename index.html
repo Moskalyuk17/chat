@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <aside class="aside">
+    <aside class="aside scrollable">
         <div class="container">
             <div class="header_aside">
                 <button class="new_chat" data="Добавить нового ассистента"><img src="/img/addNewAssistante.svg" alt="добавление ассистента" ></button>
@@ -52,6 +52,7 @@
         <div class="container ">
             <div class="out_sms scrollable">
                 <div class="out"></div>
+                <div class="out_assistante"></div>
             </div>
             <div class="form_text">
                 <input id="post-text" class="form-control" rows="3" placeholder="What's up?" type="search">
@@ -59,6 +60,18 @@
             </div>
         </div>
     </main>
+
+<div class="modalShareAssistant container" style="display: none;">
+    <form class="modalContentShare">
+        <button class="modalClose"><img src="/img/close_modal_window.svg" alt=""></button>
+        <h3>Поделиться ассистентом</h3>
+        <input type="text" id="searchUser" placeholder="Введите ID пользователя">
+        <ul id="userList">
+        </ul>
+        <button id="confirmShare">Поделиться</button>
+    </form>
+</div>
+
 
     <script async src="/js/my.js"></script>
 </body>

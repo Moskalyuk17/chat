@@ -2,6 +2,11 @@
 document.querySelector(".message_input").onclick = function inputMessage(){
     const card = document.querySelector('.out');
     const text_block = document.createElement('p');
+    text_block.style.padding = '16px';
+    text_block.style.borderRadius = '16px';
+    text_block.style.margin = '4px';
+    text_block.style.background = '#2F2F2F';
+    text_block.style.color = '#fff';
 
     const tbText = document.getElementById('post-text').value;
     text_block.style.whiteSpace = "pre-wrap";
@@ -85,6 +90,76 @@ document.querySelector('.modalWindow').addEventListener('submit', function(e) {
     e.preventDefault();
 });
 
+// Пример массива пользователей
+const users = [
+    { id: '101', name: 'User 101' },
+    { id: '102', name: 'User 102' },
+    { id: '103', name: 'User 103' },
+    { id: '104', name: 'User 104' },
+];
+
+// Открыть модальное окно "Поделиться ассистентом"
+function shareAssistant(assistantId) {
+    const modalShare = document.querySelector('.modalShareAssistant');
+    const userListElement = document.getElementById('userList');
+    const searchUserInput = document.getElementById('searchUser');
+    let selectedUserId = null;
+
+    userListElement.innerHTML = '';
+
+    users.forEach(user => {
+        const li = document.createElement('li');
+        li.textContent = `${user.id}: ${user.name}`;
+        li.addEventListener('click', () => {
+            selectedUserId = user.id;
+            alert(`Вы выбрали пользователя: ${user.name}`);
+        });
+        userListElement.appendChild(li);
+    });
+
+    searchUserInput.addEventListener('input', function () {
+        const searchValue = searchUserInput.value.toLowerCase();
+        userListElement.innerHTML = '';
+
+        const filteredUsers = users.filter(user => user.id.includes(searchValue));
+
+        if (filteredUsers.length > 0) {
+            filteredUsers.forEach(user => {
+                const li = document.createElement('li');
+                li.textContent = `${user.id}: ${user.name}`;
+                li.addEventListener('click', () => {
+                    selectedUserId = user.id;
+                    alert(`Вы выбрали пользователя: ${user.name}`);
+                });
+                userListElement.appendChild(li);
+            });
+        } else {
+            userListElement.innerHTML = '<li>Пользователь не найден</li>';
+        }
+    });
+
+    modalShare.style.display = 'flex';
+
+    const modalClose = modalShare.querySelector('.modalClose1');
+    modalClose.addEventListener('click', function () {
+        modalShare.style.display = 'none';
+    });
+
+    document.querySelector('.modalClose1').onclick = function () {
+        modalShare.style.display = 'none';
+    };
+
+    document.getElementById('confirmShare').onclick = function () {
+        if (selectedUserId) {
+            alert(`Ассистент ${assistantId} отправлен пользователю с ID ${selectedUserId}`);
+            modalShare.style.display = 'none';
+        } else {
+            alert('Выберите пользователя для отправки!');
+        }
+    };
+}
+
+// Обработчик для кнопки "Поделиться" в модальном окне редактирования
 function openEditModal(assistantId, buttonElement) {
     const modalEdit = document.createElement('div');
     modalEdit.classList.add('modalEdit');
@@ -93,6 +168,7 @@ function openEditModal(assistantId, buttonElement) {
             <button class="deleteAssistant">Удалить</button>
             <button class="editAssistant">Изменить</button>
             <button class="closeModal">Закрыть</button>
+            <button class="shareAssistante">Поделиться</button>
         </div>
     `;
 
@@ -106,7 +182,7 @@ function openEditModal(assistantId, buttonElement) {
 
     modalEdit.querySelector('.deleteAssistant').addEventListener('click', function() {
         deleteAssistant(assistantId);
-        document.body.removeChild(modalEdit); 
+        document.body.removeChild(modalEdit);
     });
 
     modalEdit.querySelector('.editAssistant').addEventListener('click', function() {
@@ -115,6 +191,11 @@ function openEditModal(assistantId, buttonElement) {
     });
 
     modalEdit.querySelector('.closeModal').addEventListener('click', function() {
+        document.body.removeChild(modalEdit);
+    });
+
+    modalEdit.querySelector('.shareAssistante').addEventListener('click', function() {
+        shareAssistant(assistantId);
         document.body.removeChild(modalEdit);
     });
 }
