@@ -55,15 +55,15 @@
                 <div class="out_assistante"></div>
             </div>
             <div class="form_text">
-                <input id="post-text" class="form-control" rows="3" placeholder="What's up?" type="search">
-                <button class="message_input" type="submit">Copy!!</button>
-            </div>
+                <input id="post-text" class="form-control" rows="3" placeholder="Сообщение ассистенту" type="search">
+                <button class="message_input" type="submit"><img src="/img/arrow_upward.svg" alt="Отправка Сообщение"></button>
+            </input>
         </div>
     </main>
 
 <div class="modalShareAssistant container" style="display: none;">
     <form class="modalContentShare">
-        <button class="modalClose"><img src="/img/close_modal_window.svg" alt=""></button>
+        <button class="modalClose" data="Закрытия модального окна"><img src="/img/close_modal_window.svg" alt=""></button>
         <h3>Поделиться ассистентом</h3>
         <input type="text" id="searchUser" placeholder="Введите ID пользователя">
         <ul id="userList">
@@ -72,7 +72,23 @@
     </form>
 </div>
 
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <form id="editForm">
+            <label for="assistantName">Название ассистента:</label>
+            <input type="text" id="assistantName" name="assistantName">
+            <label for="assistantVersion">Версия ассистента:</label>
+            <select id="assistantVersion">
+                <option >4o-mini</option>
+                <option >4o</option>
+            </select>
+            <button type="submit">Сохранить изменения</button>
+        </form>
+    </div>
+</div>
 
-    <script async src="/js/my.js"></script>
+
+<script async src="/js/my.js"></script>
 </body>
 </html>

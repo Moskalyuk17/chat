@@ -213,13 +213,35 @@ function deleteAssistant(assistantId) {
 function editAssistant(assistantId) {
     const assistant = inputArray.find(assistant => assistant.id === assistantId);
     if (assistant) {
-        const newName = prompt("Введите новое название ассистента:", assistant.name);
-        if (newName) {
-            assistant.name = newName;
-            document.querySelector(`#assistant-${assistantId} div`).textContent = `${newName}`;
+        document.getElementById('assistantName').value = assistant.name;
+        document.getElementById('assistantVersion').value = assistant.version;
+        const modal = document.getElementById("editModal");
+        modal.style.display = "block";
+
+        const form = document.getElementById('editForm');
+        form.onsubmit = function(event) {
+            event.preventDefault();
+            assistant.name = document.getElementById('assistantName').value;
+            assistant.version = document.getElementById('assistantVersion').value;
+            document.querySelector(`#assistant-${assistantId} div`).textContent = assistant.name;
+            modal.style.display = "none";
+        }
+
+        const span = document.querySelector(".close")[0];
+        span.onclick = function() {
+            modal.style.display = "none";
         }
     }
 }
+
+// Закрытие модального окна, если кликнули вне его содержимого
+window.onclick = function(event) {
+    var modal = document.getElementById("editModal");
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+}
+
 
 
 
